@@ -17,6 +17,11 @@ public class ArrayStack<T> implements IStack<T> {
         topIndex = 0;
     }
 
+    public ArrayStack() {
+        array = (T[])(new Object[DEFAULT_CAPACITY]);
+        topIndex = 0;
+    }
+
     @Override
     public boolean isEmpty() {
         return topIndex == 0;
