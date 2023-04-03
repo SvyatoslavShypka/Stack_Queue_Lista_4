@@ -8,13 +8,15 @@ public class Inverter {
 
     // Odwróć kolejność elementów w kolejce wykorzystując do tego stos zaimplementowany w klasie ArrayStack
     public static <T> void invert(IQueue<T> queue) throws EmptyQueueException, FullQueueException, FullStackException {
-        if (queue.isEmpty()) throw new EmptyQueueException();
-        ArrayStack<T> stack = new ArrayStack<>();
-        for (int i = 0; i < queue.size(); i++) {
+//        if (queue.isEmpty()) throw new EmptyQueueException();
+        ArrayStack<T> stack = new ArrayStack<>(queue.size());
+        int tmpSize = queue.size();
+        for (int i = 0; i < tmpSize; i++) {
             if (stack.isFull()) throw new FullStackException();
             stack.push(queue.dequeue());
         }
-        for (int i = 0; i < stack.size(); i++) {
+        tmpSize = stack.size();
+        for (int i = 0; i < tmpSize; i++) {
             if (queue.isFull()) throw new FullQueueException();
             queue.enqueue(stack.pop());
         }
